@@ -216,6 +216,9 @@ class AbstractPicture(CMSPlugin):
         on_delete=models.CASCADE,
     )
 
+    # Title for the structure panel
+    cms_title = models.CharField(max_length=255, blank=True)
+
     class Meta:
         abstract = True
 
@@ -225,6 +228,8 @@ class AbstractPicture(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
+        if self.cms_title:
+            return self.cms_title
         if self.external_picture:
             return self.external_picture
         if self.picture and self.picture.label:
