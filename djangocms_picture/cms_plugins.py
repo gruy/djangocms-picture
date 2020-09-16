@@ -22,7 +22,12 @@ class PicturePlugin(CMSPluginBase):
     fieldsets = [
         (None, {
             'fields': (
+                'auth_only',
                 'cms_title',
+            )
+        }),
+        (None, {
+            'fields': (
                 'picture',
                 'external_picture',
             )
